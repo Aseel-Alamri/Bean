@@ -3,175 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aseel's Coffee Shop</title>
+    <title>V60 Brew Lab</title>
+
     <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
+
 <body>
-    
-    <section class="header"> 
-        <nav>
-            <img src="Blogo.png" class="hello">
-            <div class="nav-links" id="navLinks">
-              
-                <ul>
-                    <li><a href="">HOME</a></li>
-                    <li><a href="">ABOUT</a></li>
-                    <li><a href="">CONTACT</a></li>
-                </ul>
+
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fa-solid fa-moon"></i>
+    </button>
+
+   <section class="header">
+    <div class="hero-content">
+        <span class="tagline">
+            <i class="fa-solid fa-mug-hot"></i>
+            V60 Brew Lab
+        </span>
+
+        <h1>Make Your Perfect V60 Cup</h1>
+
+        <p>
+            An interactive brewing guide that helps you discover your recipe,
+            follow a guided timer, and enjoy a smoother brewing experience.
+        </p>
+
+        <a href="#quiz" class="hero-btn">
+            Start Experience
+            <i class="fa-solid fa-arrow-down"></i>
+        </a>
+    </div>
+
+    <div class="hero-brew-visual">
+        <div class="hero-water-drop"></div>
+        <div class="hero-dripper">
+            <div class="hero-coffee-bed"></div>
+        </div>
+        <div class="hero-cup">
+            <div class="hero-coffee-fill"></div>
+        </div>
+    </div>
+</section>
+
+    <section class="section fact-section">
+        <div class="fact-card">
+            <i class="fa-solid fa-circle-info"></i>
+            <div>
+                <h3>Daily Coffee Fact</h3>
+                <p id="dailyFact"></p>
             </div>
-
-
-        </nav>  
-        <div class="text-box">
-            <h1>Best Coffee In The Middel East</h1>
-            <p>Made By The Best Coffee Artisans In The World</p>
-            <a href="" class="hero-btn"> Join Us</a> 
         </div>
     </section>
-    <!--beans-->
 
-    <section class="Beans">
-        <h1>Our Carefully Selected Coffee Beans</h1>
+    <section class="section" id="quiz">
+        <h1>Find Your Brew Personality</h1>
+        <p class="section-desc">Answer three quick questions and get a custom V60 recipe.</p>
 
-        <div class="row">
-            <div class="course-col">
-                <h3>Arabica</h3>
-                <p>Known for its smooth and rich flavor</p> </div>
+        <div class="quiz-box">
+            <div class="quiz-question">
+                <h3>1. How do you like your coffee?</h3>
+                <div class="options">
+                    <button onclick="selectQuiz('strength', 'light')">Smooth</button>
+                    <button onclick="selectQuiz('strength', 'strong')">Strong</button>
+                </div>
+            </div>
 
-                <div class="course-col">
-                    <h3>Robusta</h3>
-                    <p>Full-bodied coffee experience</p> </div>
+            <div class="quiz-question">
+                <h3>2. Which flavor do you prefer?</h3>
+                <div class="options">
+                    <button onclick="selectQuiz('flavor', 'fruity')">Fruity</button>
+                    <button onclick="selectQuiz('flavor', 'chocolate')">Chocolate</button>
+                </div>
+            </div>
 
-                    <div class="course-col">
-                           <h3>Liberica</h3>
-                           <p>Uniqe and rare , floral aroma and complex falvor</p> </div>
-                         </div>
-                      </section>
+            <div class="quiz-question">
+                <h3>3. What is your brewing style?</h3>
+                <div class="options">
+                    <button onclick="selectQuiz('style', 'calm')">Calm</button>
+                    <button onclick="selectQuiz('style', 'experimental')">Experimental</button>
+                </div>
+            </div>
 
-                      <section class="branch">
-                        <h1>Our Branches</h1>
-                        <div class="row">
-                            <div class="branch-col">
-                                <img src="london.jpg">
-                                <h3>LONDON</h3>
-                                <div class="layer">
+            <button class="main-btn" onclick="showQuizResult()">
+                Show My Recipe
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </button>
 
-                                </div>
-                            </div>
-                            <div class="branch-col">
-                                <img src="newyork.jpg">
-                                <h3>NEWYORK</h3>
-                                <div class="layer">
+            <div class="result-box" id="quizResult">
+                <h3>Your Result Will Appear Here</h3>
+                <p>Choose your answers first.</p>
+            </div>
+        </div>
+    </section>
 
-                                </div>
-                            </div>
+    
 
-                            <div class="branch-col">
-                                <img src="tokyo.jpg">
-                                <h3>TOKYO<h3>
-                                <div class="layer">
+   <section class="section recipe">
+    <div class="calculator single-calculator">
+        <h1>Perfect Brew Calculator</h1>
+        <p>Calculate the ideal water amount and generate your V60 recipe card.</p>
 
-                                </div>
-                            </div>
+        <label for="coffeeAmount">Coffee Amount</label>
+        <input type="number" id="coffeeAmount" placeholder="Example: 15">
 
+        <button onclick="calculateWater()">
+            Calculate
+            <i class="fa-solid fa-calculator"></i>
+        </button>
 
-                        </div>
-</section>
+        <h3 id="result">Required Water: -- ml</h3>
 
-<!---testmonials-->
- <section class="testmonials">
-    <h1>Our Customer Rate</h1>
-    <div class="row">
-        <div class="testmonials-col">
-            <img src="https://images.pexels.com/photos/26736436/pexels-photo-26736436/free-photo-of-a-young-woman-illuminated-by-red-light-posing-on-the-beach.jpeg?auto=compress&cs=tinysrgb&w=400">
-        <div>
-            <h3>Sara Mohamed</h3>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-              </svg>
+        <div class="notes-box">
+            <label for="brewNote">Brew Notes</label>
+            <textarea id="brewNote" placeholder="Example: Too bitter, try coarser grind next time..."></textarea>
 
-        </div> 
+            <button onclick="saveRecipe()">
+                Save Recipe
+                <i class="fa-solid fa-bookmark"></i>
+            </button>
         </div>
 
-        <div class="testmonials-col">
-            <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400">
-        <div>
-            <h3>Yara Khalid</h3>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-half" viewBox="0 0 16 16">
-                <path d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z"/>
-              </svg>
-        </div>
+        <div class="recipe-card-output" id="recipeCard">
+            <div class="recipe-card-header">
+                <i class="fa-solid fa-mug-saucer"></i>
+                <h3>V60 Recipe Card</h3>
+            </div>
+
+            <div class="recipe-card-grid">
+                <div>
+                    <span>Coffee</span>
+                    <strong id="cardCoffee">-- g</strong>
+                </div>
+
+                <div>
+                    <span>Water</span>
+                    <strong id="cardWater">-- ml</strong>
+                </div>
+
+                <div>
+                    <span>Ratio</span>
+                    <strong>1:16</strong>
+                </div>
+
+                <div>
+                    <span>Temperature</span>
+                    <strong>93°C</strong>
+                </div>
+
+                <div>
+                    <span>Brew Time</span>
+                    <strong>2:45 min</strong>
+                </div>
+
+                <div>
+                    <span>Strength</span>
+                    <strong id="cardStrength">Balanced</strong>
+                </div>
+            </div>
+
+            <div class="recipe-note-preview">
+                <span>Brew Notes</span>
+                <p id="cardNote">No notes added</p>
+            </div>
+
+            <button class="download-card-btn" onclick="downloadRecipeCard()">
+                Download Recipe Card
+                <i class="fa-solid fa-download"></i>
+            </button>
         </div>
     </div>
- </section>
+</section>
 
- <!---Footer-->
-<section class="footer">
-    <div class="icons">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
-            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
-          </svg>
-        
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
-            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
-          </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
-            <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
-          </svg>
+<section class="section history-section">
+    <h1>My Brew History</h1>
+    <p class="section-desc">Your saved V60 recipes will appear here.</p>
+
+    <div class="history-list" id="historyList">
+        <p>No saved recipes yet.</p>
     </div>
-    <P>Made With <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-balloon-heart" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="m8 2.42-.717-.737c-1.13-1.161-3.243-.777-4.01.72-.35.685-.451 1.707.236 3.062C4.16 6.753 5.52 8.32 8 10.042c2.479-1.723 3.839-3.29 4.491-4.577.687-1.355.587-2.377.236-3.061-.767-1.498-2.88-1.882-4.01-.721zm-.49 8.5c-10.78-7.44-3-13.155.359-10.063q.068.062.132.129.065-.067.132-.129c3.36-3.092 11.137 2.624.357 10.063l.235.468a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3 3 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.235-.468ZM6.013 2.06c-.649-.18-1.483.083-1.85.798-.131.258-.245.689-.08 1.335.063.244.414.198.487-.043.21-.697.627-1.447 1.359-1.692.217-.073.304-.337.084-.398"/>
-      </svg> By ASEEL </P> 
 
+    <button class="clear-btn" onclick="clearHistory()">
+        Clear History
+        <i class="fa-solid fa-trash"></i>
+    </button>
 </section>
 
+    <section class="section timer-section">
+        <h1>Guided Brew Timer</h1>
+        <p class="section-desc">Follow the brewing steps in real time.</p>
+
+        <div class="timer-box">
+            <div class="timer-display" id="timerDisplay">00:00</div>
+            <h3 id="timerStep">Ready to start</h3>
+
+            <div class="progress-bar">
+                <div id="progress"></div>
+            </div>
+
+            <div class="timer-buttons">
+                <button onclick="startTimer()">
+                    <i class="fa-solid fa-play"></i>
+                    Start
+                </button>
+
+                <button onclick="resetTimer()">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    Reset
+                </button>
+            </div>
+        </div>
+    </section>
 
 
+   <section class="section achievement-section">
+    <h1>Your Achievements</h1>
 
+    <div class="achievements-grid">
+        <div class="achievement-card" id="timerAchievement">
+            <i class="fa-solid fa-lock"></i>
+            <h3>Timer Master</h3>
+            <p>Complete the guided brew timer.</p>
+        </div>
+
+        <div class="achievement-card" id="recipeAchievement">
+            <i class="fa-solid fa-lock"></i>
+            <h3>Recipe Collector</h3>
+            <p>Save 3 V60 recipes.</p>
+        </div>
+
+        <div class="achievement-card" id="firstRecipeAchievement">
+            <i class="fa-solid fa-lock"></i>
+            <h3>First Recipe</h3>
+            <p>Save your first recipe card.</p>
+        </div>
+    </div>
 </section>
 
+    <footer>
+        <p>Made with passion by ASEEL</p>
+    </footer>
 
-
-
-
-
-
-
-
-
-
- </section>
-
-
-
-
-
-
-
-
+    <script src="script.js"></script>
 </body>
 </html>
